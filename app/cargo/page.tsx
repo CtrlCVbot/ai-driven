@@ -1,7 +1,5 @@
-"use client" // 클라이언트 컴포넌트로 선언
+"use client"
 
-import Image from "next/image";
-import { useState } from "react";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -12,42 +10,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { CalendarIcon } from "lucide-react"
 
-interface Todo {
-  id: string;
-  text: string;
-  completed: boolean;
-  createdAt: Date;
-}
-
-export default function TodoList() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [input, setInput] = useState("");
-
-  const addTodo = () => {
-    if (input.trim() === "") return; // 빈 입력 방지
-    const newTodo: Todo = {
-      id: Date.now().toString(),
-      text: input,
-      completed: false,
-      createdAt: new Date(),
-    };
-    setTodos([...todos, newTodo]);
-    setInput(""); // 입력 필드 초기화
-  };
-
-  const toggleTodo = (id: string) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
-  };
-
-  const deleteTodo = (id: string) => {
-    setTodos(todos.filter(todo => todo.id !== id));
-  };
-
+export default function cargoRegister() {
   return (
     <div className="min-h-screen bg-[#1C1C1C] text-white"> {/* 다크 테마 적용 */}
-      <div className="p-6">
+      <div className="p-4">
         <div className="grid gap-6">
           <Card className="border-[#262626] bg-[#171717] text-white">
             <CardHeader>
@@ -299,5 +265,5 @@ export default function TodoList() {
         </div>
       </div>
     </div>
-  );
-}
+  )
+} 
